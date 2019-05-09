@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { completeToDo } from '../../Redux/actions';
 
 class ToDoListItem extends React.Component {
-    handleCompleteClick = ({completeToDoId}) => {
-    
-        completeToDo(completeToDoId)
+    handleCompleteClick = (completeToDoId) => {
+        console.log(completeToDoId)
+        this.props.completeToDo(completeToDoId)
     };
 
     render() {

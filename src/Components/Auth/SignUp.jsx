@@ -1,18 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import {doCreateUser} from '../../Firebase/firebase'
+import {connect} from 'react-redux';
+import * as action from '../../Redux/actions'
 
-const SignUp = () => {
+const SignUp = (props) => {
     useEffect(() => {
     })
-
-    // next step is to move this into redux 
 
     const [credentials, setCredentials] = useState({})
 
     const handleOnSubmit = (event) => {
         const {email, password} = credentials;
-        const user = doCreateUser(email,password)
-        console.log(user);
+        doCreateUser(email,password)
         event.preventDefault()
     }
 
@@ -29,4 +28,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default connect(null, action)(SignUp)

@@ -17,10 +17,8 @@ class ToDoList extends React.Component {
 
     handleFormSubmit = event => {
         const { addFormValue } = this.state;
-        console.log(this.props)
-        const  {addToDo} = this.props;
         event.preventDefault();
-        addToDo({title: addFormValue});
+        this.props.addTodo({title: addFormValue});
         this.setState({addFormValue: ""});
     };
 
@@ -49,7 +47,6 @@ class ToDoList extends React.Component {
     renderToDos() {
         const { data } = this.props;
         const toDos = _.map(data, (value, key) => {
-            console.log(data)
             return <ToDoListItem key={key} todoId={key} todo={value} />
         });
 
@@ -74,9 +71,14 @@ class ToDoList extends React.Component {
         const { addFormVisible } = this.state;
         return (
             <div className="to-do-list-container">
+
                 <div className="row">
                     {this.renderAddForm()}
                     {this.renderToDos()}
+                    {/* {this.props.authUser 
+                        ? this.renderToDos() : 
+                        <p>Sign In To See your to dos</p>
+                    } */}
                 </div>
                 <div className="fixed-action-btn">
                     <button
@@ -96,9 +98,10 @@ class ToDoList extends React.Component {
 
 }
 
-const mapStateToProps = ({data}) => {
+const mapStateToProps = (state) => {
     return {
-        data
+        data: state.data,
+        authUser: state.authUser
     }
 }
 

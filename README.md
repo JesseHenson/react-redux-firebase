@@ -5,12 +5,15 @@
 - Redux
 - React
 - Redux-Thunk
+- User SignOut
+- User SignIn for personal Todos
 
 > Allows users to SignUp so far
 
 ## Things to Come: 
-- User SignIn for personal Todos
-- User SignOut
+- complete to delete todos
+- clean up code
+- use only react hooks
 - Reset and Change Password
 - Print Report
 - Other Added Functionality
